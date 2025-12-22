@@ -3,7 +3,7 @@ import {
   BrainCircuit,
   Megaphone,
   TrendingUp,
-  Zap,
+  HandCoins,
   ArrowUpRight,
   Sparkles,
   BookOpen
@@ -44,11 +44,11 @@ const TOOLS = [
     border: "group-hover:border-emerald-500/50"
   },
   {
-    id: "zapia",
-    title: "Zapia Automation",
-    desc: "Flujos de WhatsApp y CRM.",
-    url: "https://zapia.com/?lang=es",
-    icon: Zap,
+    id: "gem_inv",
+    title: "Inversionista",
+    desc: "Gestión de inversiones.",
+    url: "URL",
+    icon: HandCoins,
     color: "text-orange-500",
     gradient: "from-orange-400/20 to-red-500/20",
     border: "group-hover:border-orange-500/50"
