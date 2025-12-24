@@ -35,7 +35,7 @@ export const GEMS = [
     id: "gem_inv",
     title: "Inversionista",
     desc: "Gestión de inversiones.",
-    url: "URL",
+    url: "https://gemini.google.com/gem/1xYky3kI74iDQZlDiAuw-5yqxXLz3XzJj?usp=sharing",
     icon: Coins,
     color: "text-orange-500",
     gradient: "from-orange-400/20 to-red-500/20",
