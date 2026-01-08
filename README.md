@@ -1,8 +1,8 @@
-# VeroDashboard IA Hub
+# AI Assistant Hub
 
 <div align="center">
 
-![VeroDashboard Banner](./docs/banner.svg)
+![AI Assistant Hub Banner](./docs/banner.svg)
 
 **Tu Centro de Comando Inteligente para Operaciones, Marketing y Finanzas**
 
@@ -15,9 +15,9 @@
 
 ---
 
-## Que es VeroDashboard?
+## Que es AI Assistant Hub?
 
-VeroDashboard es un **hub operativo centralizado** diseñado para maximizar la productividad de profesionales que trabajan con inteligencia artificial. Consolida herramientas de IA, protocolos de uso y una biblioteca de prompts en una interfaz moderna e intuitiva.
+AI Assistant Hub es un **hub operativo centralizado** diseñado para maximizar la productividad de profesionales que trabajan con inteligencia artificial. Consolida herramientas de IA, protocolos de uso y una biblioteca de prompts en una interfaz moderna e intuitiva.
 
 ### Caracteristicas Principales
 
@@ -35,7 +35,7 @@ VeroDashboard es un **hub operativo centralizado** diseñado para maximizar la p
 ## Estructura del Proyecto
 
 ```
-vero-s-HUB-IA/
+ai-assistant-hub/
 ├── src/
 │   ├── components/
 │   │   ├── GemCard.jsx       # Tarjetas de agentes IA
@@ -133,10 +133,10 @@ La biblioteca incluye **50+ prompts** estructurados en 5 categorias principales:
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tu-usuario/vero-s-HUB-IA.git
+git clone https://github.com/tu-usuario/ai-assistant-hub.git
 
 # Entrar al directorio
-cd vero-s-HUB-IA
+cd ai-assistant-hub
 
 # Instalar dependencias
 npm install
@@ -191,7 +191,7 @@ No se requieren variables de entorno para el funcionamiento basico del proyecto.
 
 ## Protocolo de "Blindaje" para IA
 
-VeroDashboard implementa un protocolo de tres pilares para maximizar la efectividad de las interacciones con IA:
+AI Assistant Hub implementa un protocolo de tres pilares para maximizar la efectividad de las interacciones con IA:
 
 ### 1. Define el "Sombrero"
 La IA necesita saber **quien es** para no mezclar conceptos.

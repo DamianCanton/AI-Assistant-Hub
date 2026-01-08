@@ -5,13 +5,13 @@ export const PROMPTS = [
     title: "Análisis de avería",
     description:
       "Diagnóstico estructurado para identificar causas raíz de problemas técnicos.",
-    template: `Actúa como Experto Técnico en [type_of_equipment].
+    template: `Actúa como Experto Técnico en [tipo_equipo].
 
 Contexto: Estamos experimentando los siguientes síntomas:
-[symptom_description]
+[descripcion_sintoma]
 
 Historial relevante:
-[relevant_history]
+[historial_relevante]
 
 Tu tarea:
 1. Identifica las posibles causas raíz
@@ -26,7 +26,7 @@ Formato respuesta:
 |------|--------------|--------------|----------|
 | ...  | ...          | ...          | ...     
 
-Limitaciones: [specific_constraints]`,
+Limitaciones: [restricciones_especificas]`,
     blanks: [
       "tipo_equipo",
       "descripcion_sintoma",
@@ -44,16 +44,16 @@ specific_constraints: Sin acceso a datos del BMS por ahora`,
     title: "Especificación técnica",
     description:
       "Crear specs técnicas claras para requerimientos de compra o proyectos.",
-    template: `Eres Especialista Técnico en [product_category].
+    template: `Eres Especialista Técnico en [categoria_producto].
 
 Necesito redactar una especificación técnica para:
-[product_or_service]
+[producto_servicio]
 
 Requisitos técnicos obligatorios:
-[technical_requirements]
+[requisitos_tecnicos]
 
 Restricciones:
-[constraints]
+[restricciones]
 
 Formato:
 1. Introducción y alcance
@@ -79,20 +79,20 @@ constraints: Presupuesto máximo $800,000 USD`,
     category: "operacional",
     title: "Respuesta a reclamo",
     description: "Redactar respuestas profesionales a quejas de clientes.",
-    template: `Actúa como [your_role] de [company_name].
+    template: `Actúa como [tu_rol] de [nombre_empresa].
 
 Reclamo del cliente:
-[customer_complaint]
+[reclamo_cliente]
 
 Política de la empresa relevante:
-[company_policy]
+[politica_empresa]
 
 Historial del cliente:
-[customer_history]
+[historial_cliente]
 
-Objetivo: [response_objective]
+Objetivo: [objetivo_respuesta]
 
-Tono: [desired_tone]
+Tono: [tono_deseado]
 
 Estructura de respuesta:
 1. Reconocimiento del problema
@@ -101,7 +101,7 @@ Estructura de respuesta:
 4. Compensación (si aplica)
 5. Cierre positivo
 
-Máximo [word_limit] palabras.`,
+Máximo [limite_palabras] palabras.`,
     blanks: [
       "tu_rol",
       "nombre_empresa",
@@ -128,16 +128,16 @@ word_limit: 150`,
     description: "Crear SOPs claros y accionables para operaciones.",
     template: `Redacta un Procedimiento Estándar de Operación (SOP) para:
 
-Tarea: [task_name]
+Tarea: [nombre_tarea]
 
 Paso a paso:
-[steps_description]
+[descripcion_pasos]
 
 Notas de seguridad:
-[safety_notes]
+[notas_seguridad]
 
 Puntos críticos de calidad:
-[quality_checkpoints]
+[puntos_control_calidad]
 
 Formato requerido:
 - Título claro
@@ -167,25 +167,25 @@ quality_checkpoints: Temperatura de salida de agua entre 6-8°C`,
     description: "Generar reportes técnicos de intervenciones.",
     template: `Genera un Informe Técnico de Mantenimiento para:
 
-Equipo: [equipment_name]
-Ubicación: [location]
-Fecha: [date]
-Técnico: [technician_name]
+Equipo: [nombre_equipo]
+Ubicación: [ubicacion]
+Fecha: [fecha]
+Técnico: [nombre_tecnico]
 
 Hallazgos:
-[findings_description]
+[descripcion_hallazgos]
 
 Trabajos realizados:
-[work_done]
+[trabajos_realizados]
 
 Repuestos utilizados:
-[parts_used]
+[repuestos_usados]
 
 Recomendaciones:
-[recommendations]
+[recomendaciones]
 
 Próxima intervención sugerida:
-[next_intervention]
+[proxima_intervencion]
 
 Formato profesional con firma del técnico.`,
     blanks: [
@@ -216,28 +216,28 @@ next_intervention: Mantenimiento programado mayo 2024`,
     description: "Redactar propuestas técnicas que soldifiquen la solución.",
     template: `Elabora una Propuesta Técnica Comercial para:
 
-Cliente: [client_name]
-Proyecto: [project_name]
+Cliente: [nombre_cliente]
+Proyecto: [nombre_proyecto]
 
 Necesidad del cliente:
-[client_need]
+[necesidad_cliente]
 
 Solución propuesta:
-[solution_description]
+[descripcion_solucion]
 
 Propuesta de valor:
-[value_proposition]
+[propuesta_valor]
 
 Alcance incluido:
-[included_scope]
+[alcance_incluido]
 
 Fuera de alcance:
-[out_of_scope]
+[fuera_alcance]
 
 Garantía:
-[warranty_terms]
+[terminos_garantia]
 
-Válido hasta: [validity_date]
+Válido hasta: [fecha_validez]
 
 Incluye:
 - Portada profesional
@@ -275,18 +275,18 @@ validity_date: 30 días naturales`,
       "Analizar y comparar opciones técnicas para toma de decisiones.",
     template: `Realiza un análisis comparativo de soluciones para:
 
- Problema/Necesidad: [problem_statement]
+ Problema/Necesidad: [declaracion_problema]
 
 Opciones a evaluar:
-[option_1] - [description_1]
-[option_2] - [description_2]
-[option_3] - [description_3]
+[opcion_1] - [descripcion_1]
+[opcion_2] - [descripcion_2]
+[opcion_3] - [descripcion_3]
 
 Criterios de evaluación (peso):
-[criterion_1] - [weight_1]
-[criterion_2] - [weight_2]
-[criterion_3] - [weight_3]
-[criterion_4] - [weight_4]
+[criterio_1] - [peso_1]
+[criterio_2] - [peso_2]
+[criterio_3] - [peso_3]
+[criterio_4] - [peso_4]
 
 Para cada opción, evalúa de 1-10 en cada criterio y justifica.
 
@@ -328,9 +328,9 @@ criterion_4: Mantenimiento - 20%`,
       "Crear contenido de valor para LinkedIn que posicione expertise.",
     template: `Crea un post para LinkedIn sobre:
 
-Tema: [topic]
-Audiencia objetivo: [audience]
-Tono: [tone]
+Tema: [tema]
+Audiencia objetivo: [audiencia]
+Tono: [tono]
 
 Estructura:
 1. Gancho inicial (pregunta o dato impactante)
@@ -338,9 +338,9 @@ Estructura:
 3. Llamada a la acción
 
 Requisitos:
-- Máxima [word_limit] palabras
-- Incluir [number] hashtags relevantes
-- Incluir [cta_type]
+- Máxima [limite_palabras] palabras
+- Incluir [numero] hashtags relevantes
+- Incluir [tipo_cta]
 - No usar emojis excesivos
 
 Formato listo para publicar.`,
@@ -360,15 +360,15 @@ cta_type: Pregunta para generar engagement`,
       "Secuencias de email para leads en diferentes etapas del embudo.",
     template: `Redacta un email de nurturing para:
 
-Etapa del embudo: [funnel_stage]
-Producto/Servicio: [product_or_service]
+Etapa del embudo: [etapa_embudo]
+Producto/Servicio: [producto_servicio]
 
-Perfil del destinatario: [recipient_profile]
-Dolor principal: [pain_point]
+Perfil del destinatario: [perfil_destinatario]
+Dolor principal: [dolor_principal]
 
-Objetivo del email: [email_objective]
+Objetivo del email: [objetivo_email]
 
-Tono: [tone]
+Tono: [tono]
 
 Estructura:
 1. Asunto pegadizo (máx 50 caracteres)
@@ -378,7 +378,7 @@ Estructura:
 5. Social proof
 6. CTA claro
 
-Firma: [sender_info]`,
+Firma: [info_remitente]`,
     blanks: [
       "etapa_embudo",
       "producto_servicio",
@@ -401,23 +401,23 @@ sender_info: María González, Especialista en Soluciones Industriales`,
     category: "marketing",
     title: "Contenido para redes sociales",
     description: "Adaptar mensajes clave para diferentes plataformas.",
-    template: `Adapta este contenido para [platform]:
+    template: `Adapta este contenido para [plataforma]:
 
 Mensaje original:
-[original_message]
+[mensaje_original]
 
-Objetivo: [objective]
-Tono: [tone]
-Audience: [audience]
+Objetivo: [objetivo]
+Tono: [tono]
+Audiencia: [audiencia]
 
-Para [platform], necesito:
-- Caption (máx [char_limit] caracteres)
-- [number] hashtags estratégicos
+Para [plataforma], necesito:
+- Caption (máx [limite_caracteres] caracteres)
+- [numero] hashtags estratégicos
 - 1 variation con ángulo diferente
 - Suggestion de mejor horario para publicar
 
 Platform guidelines a considerar:
-[platform_guidelines]`,
+[guia_plataforma]`,
     blanks: [
       "plataforma",
       "mensaje_original",
@@ -442,11 +442,11 @@ platform_guidelines: Priorizar stories, usar carousel para detalles técnicos`,
     category: "marketing",
     title: "Landing page copy",
     description: "Crear copy persuasivo para páginas de conversión.",
-    template: `Crea copy para landing page de [product_or_service]:
+    template: `Crea copy para landing page de [producto_servicio]:
 
-Target audience: [audience]
-Problema que resuelve: [problem_solved]
-Beneficio principal: [main_benefit]
+Target audience: [audiencia]
+Problema que resuelve: [problema_resuelto]
+Beneficio principal: [beneficio_principal]
 
 Secciones necesarias:
 1. Hero section (título + subtítulo + CTA)
@@ -457,8 +457,8 @@ Secciones necesarias:
 6. FAQ (3 preguntas frecuentes)
 7. CTA final
 
-Tono: [tone]
-PALabras clave SEO: [keywords]`,
+Tono: [tono]
+Palabras clave SEO: [palabras_clave]`,
     blanks: [
       "producto_servicio",
       "audiencia",
@@ -479,17 +479,17 @@ keywords: auditoría energética, ahorro de energía industrial, eficiencia ener
     category: "marketing",
     title: "Script video corto",
     description: "Guiones para videos de 30-60 segundos en redes.",
-    template: `Crea un script para video de [duration] segundos sobre:
+    template: `Crea un script para video de [duracion] segundos sobre:
 
-Tema: [topic]
-Objetivo: [objective]
-Audience: [audience]
-Tono: [tone]
+Tema: [tema]
+Objetivo: [objetivo]
+Audiencia: [audiencia]
+Tono: [tono]
 
 Estructura:
-- Gancho (0-3 seg): [hook]
+- Gancho (0-3 seg): [gancho]
 - Problema/Introducción (3-10 seg): [intro]
-- Contenido valor (10-40 seg): [content]
+- Contenido valor (10-40 seg): [contenido]
 - CTA (40-60 seg): [cta]
 
 Specs técnicas:
@@ -524,23 +524,23 @@ cta: Descarga nuestra checklist de diagnóstico gratuito`,
     description: "Redactar mensajes para situaciones de crisis o controversia.",
     template: `Prepara comunicación para situación de crisis:
 
-Tipo de crisis: [crisis_type]
-Severity: [severity_level]
+Tipo de crisis: [tipo_crisis]
+Severity: [nivel_severidad]
 Stakeholders afectados: [stakeholders]
 
 Mensaje clave a comunicar:
-[main_message]
+[mensaje_principal]
 
 Hechos verificados:
-[verified_facts]
+[hechos_verificados]
 Aún sin confirmar:
-[unconfirmed_info]
+[info_no_confirmada]
 
 Acciones tomadas:
-[actions_taken]
+[acciones_tomadas]
 
-Tono requerido: [tone]
-Canal: [channel]
+Tono requerido: [tono]
+Canal: [canal]
 
 Estructura:
 1. Título urgente pero calmado
@@ -576,27 +576,27 @@ channel: Email directo + llamada telefónica`,
     description: "Estructurar casos de éxito de forma persuasiva.",
     template: `Redacta un case study para:
 
-Cliente: [client_name]
-Industria: [industry]
-Proyecto: [project_type]
+Cliente: [nombre_cliente]
+Industria: [industria]
+Proyecto: [tipo_proyecto]
 
 Desafío inicial:
-[challenge]
+[desafio]
 
 Solución implementada:
-[solution]
+[solucion]
 
 Resultados (con métricas):
-[results]
+[resultados]
 
 Testimonio del cliente:
-[testimonial_quote]
+[cita_testimonio]
 
 Otros beneficios secundarios:
-[secondary_benefits]
+[beneficios_secundarios]
 
 Formato:
-1. Título吸引人 (gancho)
+1. Título (gancho)
 2. Perfil del cliente (contexto)
 3. El desafío
 4. La solución
@@ -631,16 +631,16 @@ secondary_benefits: Reducción de ruido, mantenimiento simplificado`,
     description: "Calcular y presentar retorno de inversión de forma clara.",
     template: `Realiza un análisis de ROI para:
 
-Inversión inicial: [initial_investment]
-Retornos proyectados (mensuales/anuales): [projected_returns]
-Plazo de análisis: [timeframe]
-Tasa de descuento: [discount_rate]
+Inversión inicial: [inversion_inicial]
+Retornos proyectados (mensuales/anuales): [retornos_proyectados]
+Plazo de análisis: [plazo_analisis]
+Tasa de descuento: [tasa_descuento]
 
 Gastos operativos adicionales:
-[additional_opex]
+[opex_adicional]
 
 Ahorros/Costos evitados:
-[cost_savings]
+[ahorros_costos]
 
 Calcula:
 1. VAN (Valor Actual Neto)
@@ -674,24 +674,24 @@ cost_savings: $25,000 USD/año en energéticos evitados`,
       "Resumir estados financieros para toma de decisiones directivas.",
     template: `Genera un Informe Ejecutivo Financiero para:
 
-Período: [period]
-Unidad de negocio: [business_unit]
-Audiencia: [audience]
+Período: [periodo]
+Unidad de negocio: [unidad_negocio]
+Audiencia: [audiencia]
 
 Highlights principales:
 [highlights]
 
 Indicadores clave:
-[metrics_with_values]
+[metricas_valores]
 
 Comparación vs período anterior:
-[variance_analysis]
+[analisis_varianza]
 
 Concerns/Riesgos identificados:
 [concerns]
 
 Recomendaciones:
-[recommendations]
+[recomendaciones]
 
 Formato:
 - 1 página máximo
@@ -724,22 +724,22 @@ recommendations: Revisión de pricing, automatización de reportes`,
       "Evaluar opciones de inversión o proveedores por criterios financieros.",
     template: `Compara las siguientes opciones de presupuesto:
 
-Opción A: [option_a]
-Costo: [cost_a]
-Condiciones: [terms_a]
+Opción A: [opcion_a]
+Costo: [costo_a]
+Condiciones: [condiciones_a]
 
-Opción B: [option_b]
-Costo: [cost_b]
-Condiciones: [terms_b]
+Opción B: [opcion_b]
+Costo: [costo_b]
+Condiciones: [condiciones_b]
 
-Opción C: [option_c]
-Costo: [cost_c]
-Condiciones: [terms_c]
+Opción C: [opcion_c]
+Costo: [costo_c]
+Condiciones: [condiciones_c]
 
 Criterios de evaluación:
-[criterion_1] (peso [weight_1]%)
-[criterion_2] (peso [weight_2]%)
-[criterion_3] (peso [weight_3]%)
+[criterio_1] (peso [peso_1]%)
+[criterio_2] (peso [peso_2]%)
+[criterio_3] (peso [peso_3]%)
 
 Análisis:
 - Tabla comparativa por criterio
@@ -783,21 +783,21 @@ criterion_3: Flexibilidad financiera - 25%`,
     description: "Crear forecast de ingresos basado en supuestos claros.",
     template: `Genera proyección de ventas para:
 
-Producto/Servicio: [product_or_service]
-Período: [time_period]
-Mercado objetivo: [target_market]
+Producto/Servicio: [producto_servicio]
+Período: [periodo_tiempo]
+Mercado objetivo: [mercado_objetivo]
 
 Supuestos base:
-[assumptions]
+[supuestos]
 
 Historico disponible:
-[historical_data]
+[datos_historicos]
 
 Precios:
-[pricing_info]
+[info_precios]
 
 Capacidad de entrega:
-[capacity_info]
+[info_capacidad]
 
 Entregable:
 - Proyección mensual/trimestral
@@ -829,14 +829,14 @@ capacity_info: 30 técnicos disponibles,利用率 75%`,
     description: "Identificar y mitigar riesgos financieros de proyectos.",
     template: `Realiza análisis de riesgos para:
 
-Proyecto: [project_name]
-Inversión total: [total_investment]
-Plazo: [timeline]
+Proyecto: [nombre_proyecto]
+Inversión total: [inversion_total]
+Plazo: [plazo]
 
 Variables de riesgo:
-[risk_variable_1] - Probabilidad: [prob_1], Impacto: [impact_1]
-[risk_variable_2] - Probabilidad: [prob_2], Impacto: [impact_2]
-[risk_variable_3] - Probabilidad: [prob_3], Impacto: [impact_3]
+[variable_riesgo_1] - Probabilidad: [prob_1], Impacto: [impacto_1]
+[variable_riesgo_2] - Probabilidad: [prob_2], Impacto: [impacto_2]
+[variable_riesgo_3] - Probabilidad: [prob_3], Impacto: [impacto_3]
 
 Análisis:
 1. Matriz de riesgos (probabilidad vs impacto)
@@ -874,29 +874,29 @@ risk_variable_3: Demanda menor a esperada - Prob: 30%, Impacto: Alto`,
     description: "Documento de negocio para solicitar aprobación de capital.",
     template: `Prepara Justificación de Inversión para:
 
-Proyecto: [project_name]
-Monto solicitado: [amount]
-Departamento: [department]
+Proyecto: [nombre_proyecto]
+Monto solicitado: [monto]
+Departamento: [departamento]
 
 Objetivo del proyecto:
-[project_objective]
+[objetivo_proyecto]
 
 Análisis costo-beneficio:
-[benefits_quantified]
+[beneficios_cuantificados]
 
 Análisis de alternativas:
-[alternatives]
+[alternativas]
 
 Riesgos y mitigaciones:
-[risks_mitigations]
+[riesgos_mitigaciones]
 
 Impacto en indicadores:
-[impact_metrics]
+[impacto_metricas]
 
 Cronograma de implementación:
-[timeline]
+[cronograma]
 
-Solicitud: Aprobación de inversión por [amount]
+Solicitud: Aprobación de inversión por [monto]
 
 Documento de máximo 2 páginas.`,
     blanks: [
@@ -927,16 +927,16 @@ timeline: Implementación 4 meses, ROI esperado 8 meses`,
     description: "Definir y presentar KPIs financieros relevantes.",
     template: `Diseña dashboard financiero para:
 
-Organización/Área: [organization]
-Período: [period]
-Audience: [audience]
+Organización/Área: [organizacion]
+Período: [periodo]
+Audiencia: [audiencia]
 
 KPIs a incluir:
-[kpi_1] - Meta: [target_1]
-[kpi_2] - Meta: [target_2]
-[kpi_3] - Meta: [target_3]
-[kpi_4] - Meta: [target_4]
-[kpi_5] - Meta: [target_5]
+[kpi_1] - Meta: [meta_1]
+[kpi_2] - Meta: [meta_2]
+[kpi_3] - Meta: [meta_3]
+[kpi_4] - Meta: [meta_4]
+[kpi_5] - Meta: [meta_5]
 
 Para cada KPI:
 - Definición y fórmula
@@ -977,24 +977,24 @@ kpi_5: Churn rate - Meta: <5%`,
     title: "Comparativa de productos",
     description:
       "Usar Perplexity para comparar opciones de compra con fuentes.",
-    template: `Compara [product_or_category] usando Perplexity Focus: [source_type].
+    template: `Compara [producto_categoria] usando Perplexity Focus: [tipo_fuente].
 
 Criterios de comparación:
-[comparison_criteria]
+[criterios_comparacion]
 
 Productos a comparar:
-1. [product_1]
-2. [product_2]
-3. [product_3]
+1. [producto_1]
+2. [producto_2]
+3. [producto_3]
 
 Para cada producto, encuentra:
 - Especificaciones técnicas clave
-- Precio aproximado en [market]
+- Precio aproximado en [mercado]
 - Fortalezas y debilidades
 - Opiniones de usuarios
-- Disponibilidad en [market]
+- Disponibilidad en [mercado]
 
-Resume en tabla comparativa y recomienda la mejor opción para [use_case].`,
+Resume en tabla comparativa y recomienda la mejor opción para [caso_uso].`,
     blanks: [
       "producto_categoria",
       "tipo_fuente",
@@ -1019,17 +1019,17 @@ use_case: Planta de procesamiento con calor residual disponible`,
     category: "investigacion",
     title: "Resumen de tema técnico",
     description: "Obtener resúmenes ejecutivos de temas técnicos complejos.",
-    template: `Investiga exhaustivamente [technical_topic] usando Perplexity.
+    template: `Investiga exhaustivamente [tema_tecnico] usando Perplexity.
 
-Profundidad requerida: [depth_level]
+Profundidad requerida: [nivel_profundidad]
 
 Áreas de enfoque específicas:
-[focus_areas]
+[areas_enfoque]
 
 Preguntas clave a responder:
-1. [question_1]
-2. [question_2]
-3. [question_3]
+1. [pregunta_1]
+2. [pregunta_2]
+3. [pregunta_3]
 
 Usa fuentes académicas y técnicas. Incluye referencias verificables.
 
@@ -1058,18 +1058,18 @@ question_3: Cuál es el costo incremental de transición`,
     category: "investigacion",
     title: "Verificación de datos",
     description: "Verificar afirmaciones o datos con fuentes primarias.",
-    template: `Verifica la siguiente afirmación usando Perplexity Focus: [source_type]
+    template: `Verifica la siguiente afirmación usando Perplexity Focus: [tipo_fuente]
 
 Afirmación a verificar:
-[claim_to_verify]
+[afirmacion_verificar]
 
 Contexto adicional:
-[context]
+[contexto]
 
 Necesito:
 1. Fuentes que confirmen o contradigan la afirmación
 2. Nivel de certeza de cada fuente
-3. Fecha de las fuentes (no mayores a [max_age])
+3. Fecha de las fuentes (no mayores a [max_edad])
 4. Si es falso/mítico, la explicación correcta
 5. Recomendación de cómo actuar con esta información
 
@@ -1085,16 +1085,16 @@ max_age: 24 meses`,
     category: "investigacion",
     title: "Estado del arte",
     description: "Revisión del estado actual de una tecnología o campo.",
-    template: `Genera un estado del arte de [technology_or_field] hasta [year].
+    template: `Genera un estado del arte de [tecnologia_campo] hasta [ano].
 
 Aspectos a cubrir:
 1. Evolución histórica reciente (últimos 10 años)
 2. Estado actual de la tecnología
-3. Aplicaciones principales en [sector_or_context]
+3. Aplicaciones principales en [sector_contexto]
 4. Principales players/ investigadores
 5. Tendencias emergentes
 6. Desafíos técnicos no resueltos
-7. Proyecciones a [future_year]
+7. Proyecciones a [ano_futuro]
 
 Usa fuentes académicas y técnicas.
 Formato: Informe estructurado con referencias.`,
@@ -1114,9 +1114,9 @@ future_year: 2030`,
     category: "investigacion",
     title: "Búsqueda de competidores",
     description: "Analizar el panorama competitivo de un mercado.",
-    template: `Realiza análisis competitivo de [industry] en [geographic_area] usando Perplexity.
+    template: `Realiza análisis competitivo de [industria] en [area_geografica] usando Perplexity.
 
-Focus: [focus_type]
+Focus: [tipo_foco]
 
 Aspectos a investigar:
 1. Principales competidores
@@ -1127,9 +1127,9 @@ Aspectos a investigar:
 6. Clientes objetivo principales
 
 Para cada competidor identificado:
-[competitor_1]
-[competitor_2]
-[competitor_3]
+[competidor_1]
+[competidor_2]
+[competidor_3]
 
 Presenta análisis en formato actionable para estrategia comercial.`,
     blanks: [
@@ -1152,19 +1152,19 @@ competitor_3: Empresas locales especializadas`,
     category: "investigacion",
     title: "Revisión de literatura",
     description: "Sintetizar investigación académica sobre un tema.",
-    template: `Realiza revisión de literatura sobre [research_topic] usando Perplexity Focus: academic.
+    template: `Realiza revisión de literatura sobre [tema_investigacion] usando Perplexity Focus: academic.
 
 Preguntas de investigación:
-1. [research_question_1]
-2. [research_question_2]
-3. [research_question_3]
+1. [pregunta_investigacion_1]
+2. [pregunta_investigacion_2]
+3. [pregunta_investigacion_3]
 
-Período de búsqueda: [year_range]
+Período de búsqueda: [rango_anos]
 
 Necesito:
-- Síntesis de hallazgos principales (últimos [number] papers)
+- Síntesis de hallazgos principales (últimos [numero] papers)
 - Controversias o brechas identificadas
-- Implicaciones prácticas para [practical_context]
+- Implicaciones prácticas para [contexto_practico]
 - Papers/key references más relevantes (con DOI si es posible)
 
 Formato: Informe estructurado estilo revisión de literatura académica.`,
@@ -1190,19 +1190,19 @@ practical_context: Implementación en planta industrial mexicana`,
     category: "investigacion",
     title: "Análisis de tendencias",
     description: "Identificar y proyectar tendencias en un sector.",
-    template: `Analiza tendencias de [sector] para el período [timeframe] usando Perplexity.
+    template: `Analiza tendencias de [sector] para el período [periodo_tiempo] usando Perplexity.
 
 Indicadores a analizar:
-1. [indicator_1]
-2. [indicator_2]
-3. [indicator_3]
-4. [indicator_4]
+1. [indicador_1]
+2. [indicador_2]
+3. [indicador_3]
+4. [indicador_4]
 
 Para cada indicador:
 - Estado actual
 - Tendencia histórica
 - Proyección
-- Implicaciones para [my_business_context]
+- Implicaciones para [mi_contexto_negocio]
 
 Conclusión:
 - Oportunidades identificadas
@@ -1230,19 +1230,19 @@ my_business_context: PYME de mantenimiento HVAC buscando diferenciación`,
     category: "presentaciones",
     title: "Pitch deck inversores",
     description: "Outline completo para presentar a potenciales inversores.",
-    template: `Genera outline para pitch deck de [company_name] buscando [ask_amount] por [equity_percentage]%.
+    template: `Genera outline para pitch deck de [nombre_empresa] buscando [monto_solicitado] por [porcentaje_participacion]%.
 
 Secciones necesarias:
-1. Título [company_name] - [tagline]
-2. El problema [problem_statement]
-3. La solución [solution_description]
-4. Oportunidad de mercado [market_opportunity]
-5. Modelo de negocio [business_model]
-6. Tracción actual [traction]
-7. Equipo [team_key_members]
-8. Competencia [competitive_advantages]
-9. Uso de fondos [use_of_funds]
-10. Visión a [vision_timeline]
+1. Título [nombre_empresa] - [declaracion_problema]
+2. El problema [declaracion_problema]
+3. La solución [descripcion_solucion]
+4. Oportunidad de mercado [oportunidad_mercado]
+5. Modelo de negocio [modelo_negocio]
+6. Tracción actual [traccion]
+7. Equipo [miembros_clave]
+8. Competencia [ventajas_competitivas]
+9. Uso de fondos [uso_fondos]
+10. Visión a [vision_plazo]
 
 Para cada sección incluye:
 - Sugerencia de slides
@@ -1284,17 +1284,17 @@ vision_timeline: Ser líderes en México en 3 años, expansión a USA en 5`,
     description: "Outline para presentar informes a dirección.",
     template: `Crea estructura de presentación para informe ejecutivo:
 
-Tema: [topic]
-Audiencia: [audience]
-Duración: [duration]
+Tema: [tema]
+Audiencia: [audiencia]
+Duración: [duracion]
 
 Secciones:
-1. Resumen ejecutivo [key_findings]
-2. Metodología / Contexto [methodology]
-3. Hallazgos principales [findings]
-4. Análisis [analysis]
-5. Recomendaciones [recommendations]
-6. Próximos pasos [next_steps]
+1. Resumen ejecutivo [hallazgos_clave]
+2. Metodología / Contexto [metodologia]
+3. Hallazgos principales [hallazgos]
+4. Análisis [analisis]
+5. Recomendaciones [recomendaciones]
+6. Próximos pasos [proximos_pasos]
 7. Q&A
 
 Para cada sección:
@@ -1334,21 +1334,21 @@ anexos: Matriz comparativa completa, fichas técnicas`,
     description: "Outline para sesiones de capacitación de empleados.",
     template: `Diseña presentación de capacitación:
 
-Tema: [topic]
-Audiencia: [audience]
-Duración: [duration]
-Modalidad: [modality]
+Tema: [tema]
+Audiencia: [audiencia]
+Duración: [duracion]
+Modalidad: [modalidad]
 
 Objetivos de aprendizaje:
-[learning_objectives]
+[objetivos_aprendizaje]
 
 Estructura:
-1. Introducción y objetivos [time_allocation]
-2. Conceptos clave [key_concepts]
-3. Demo / Ejercicio práctico [demo_exercise]
-4. Caso de estudio [case_study]
-5. Errores comunes a evitar [common_mistakes]
-6. Q&A y recursos adicionales [resources]
+1. Introducción y objetivos [asignacion_tiempo]
+2. Conceptos clave [conceptos_clave]
+3. Demo / Ejercicio práctico [demo_ejercicio]
+4. Caso de estudio [caso_estudio]
+5. Errores comunes a evitar [errores_comunes]
+6. Q&A y recursos adicionales [recursos]
 
 Incluye:
 - Slides interactivos sugeridos
@@ -1385,21 +1385,21 @@ resources: Manual de usuario, video tutorial, contacto soporte`,
     category: "presentaciones",
     title: "Presentación de producto",
     description: "Outline para demos y presentaciones comerciales de producto.",
-    template: `Crea presentación comercial para [product_name]:
+    template: `Crea presentación comercial para [nombre_producto]:
 
-Audiencia: [audience]
-Duración: [duration]
-Objetivo: [objective]
+Audiencia: [audiencia]
+Duración: [duracion]
+Objetivo: [objetivo]
 
 Estructura:
-1. Hook de apertura [hook]
-2. Problema que resolvemos [problem]
-3. Nuestra solución [solution]
-4. Demo live / walkthrough [demo_flow]
-5. Beneficios clave [benefits]
-6. Casos de éxito [success_stories]
-7. Propuesta de valor [value_proposition]
-8. Pricing (si aplica) [pricing_info]
+1. Hook de apertura [gancho]
+2. Problema que resolvemos [problema]
+3. Nuestra solución [solucion]
+4. Demo live / walkthrough [flujo_demo]
+5. Beneficios clave [beneficios]
+6. Casos de éxito [historias_exito]
+7. Propuesta de valor [propuesta_valor]
+8. Pricing (si aplica) [info_precios]
 9. CTA / Próximos pasos [cta]
 
 Incluye:
@@ -1495,34 +1495,27 @@ next_steps: Aprobación hasta viernes, inicio en 2 semanas`,
 
 Período: [period]
 Área/Equipo: [area]
-Audiencia: [audience]
+Audiencia: [audiencia]
 
 Secciones:
-1. Resumen ejecutivo [executive_summary]
+1. Resumen ejecutivo [resumen_ejecutivo]
 2. Highlights del quarter [highlights]
-3. Métricas clave [metrics]
-4. Desafíos enfrentados [challenges]
-5. Lecciones aprendidas [lessons_learned]
-6. Comparativo vs objetivos [variance]
-7. Próximo quarter [upcoming_priorities]
-8. Recursos necesitados [resource_requests]
+3. Métricas clave [metricas]
+4. Desafíos enfrentados [desafios]
+5. Lecciones aprendidas [lecciones_aprendidas]
+6. Comparativo vs objetivos [varianza]
+7. Próximo quarter [prioridades_proximo]
+8. Recursos necesitados [solicitudes_reursos]
 
 Incluye:
 - Gráficos de tendencias
 - Comparativo con quarter anterior
 - Tablero de KPIs`,
     blanks: [
-      "period",
-      "area",
-      "audience",
-      "executive_summary",
-      "highlights",
-      "metrics",
-      "challenges",
-      "lessons_learned",
-      "variance",
-      "upcoming_priorities",
-      "resource_requests",
+      "tipo_documento",
+      "proposito",
+      "audiencia",
+      "contenido_documento",
     ],
     example: `period: Q4 2024
 area: Servicios de Mantenimiento
@@ -1541,22 +1534,22 @@ resource_requests: 1 técnico de apoyo, licencia software adicional`,
     category: "presentaciones",
     title: "Demo de producto",
     description: "Outline estructurado para demos efectivas.",
-    template: `Prepara script de demo para [product_name]:
+    template: `Prepara script de demo para [nombre_producto]:
 
-Audience: [audience]
-Duración: [duration]
-Tipo de demo: [demo_type]
+Audiencia: [audiencia]
+Duración: [duracion]
+Tipo de demo: [tipo_demo]
 
 Estructura:
-1. Introducción [intro_time]
+1. Introducción [tiempo_intro]
    - Presentación
    - Expectativas del demo
    
-2. Setup / Contexto [context_time]
+2. Setup / Contexto [tiempo_contexto]
    - Situación inicial del cliente
    - Desafíos actuales
    
-3. Demo principal [demo_time]
+3. Demo principal [tiempo_demo]
    - Flujo paso a paso
    - Puntos de engagement
    
@@ -1600,15 +1593,15 @@ closing_time: 2 min - proponer piloto gratuito`,
     category: "general",
     title: "Resumen ejecutivo",
     description: "Sintetizar documentos largos en resúmenes ejecutivos.",
-    template: `Genera un Resumen Ejecutivo de [document_type] de [length] páginas.
+    template: `Genera un Resumen Ejecutivo de [tipo_documento] de [longitud] páginas.
 
-Tema principal: [main_topic]
+Tema principal: [tema_principal]
 
 Puntos clave a incluir:
-[key_points]
+[puntos_clave]
 
-Audiencia del resumen: [audience]
-Longitud deseada: [word_limit]
+Audiencia del resumen: [audiencia]
+Longitud deseada: [limite_palabras]
 
 Formato:
 - Máximo 1 página
@@ -1616,12 +1609,12 @@ Formato:
 - Si aplica,表格 de datos clave
 - Conclusión con recomendación`,
     blanks: [
-      "document_type",
-      "length",
-      "main_topic",
-      "key_points",
-      "audience",
-      "word_limit",
+      "tipo_documento",
+      "longitud",
+      "tema_principal",
+      "puntos_clave",
+      "audiencia",
+      "limite_palabras",
     ],
     example: `document_type: Informe de auditoría
 length: 45 páginas
@@ -1640,12 +1633,12 @@ word_limit: 300 palabras`,
 Email original:
 [original_email]
 
-Tu rol: [your_role]
-Tono deseado: [tone]
-Objetivo: [objective]
+Tu rol: [tu_rol]
+Tono deseado: [tono]
+Objetivo: [objetivo]
 
 Consideraciones:
-[considerations]
+[consideraciones]
 
 Estructura:
 1. Reconocimiento del email
@@ -1655,19 +1648,19 @@ Estructura:
 
 Máximo [word_limit] palabras.`,
     blanks: [
-      "original_email",
-      "your_role",
-      "tone",
-      "objective",
-      "considerations",
-      "word_limit",
+      "email_original",
+      "tu_rol",
+      "tono",
+      "objetivo",
+      "consideraciones",
+      "limite_palabras",
     ],
-    example: `original_email: Queja formal del cliente por delay en proyecto
-your_role: Gerente de Proyectos
-tone: Profesional pero no defensivo
-objective: Recover la relación y proponer solución
-considerations: El cliente tiene razón en部分 del reclamo, pero hay factores externos
-word_limit: 200`,
+    example: `email_original: Queja formal del cliente por delay en proyecto
+tu_rol: Gerente de Proyectos
+tono: Profesional pero no defensivo
+objetivo: Recover la relación y proponer solución
+consideraciones: El cliente tiene razón en parte del reclamo, pero hay factores externos
+limite_palabras: 200`,
   },
   {
     id: "ge_3",
@@ -1799,32 +1792,32 @@ Idioma origen: [source_language]
 Idioma destino: [target_language]
 Tipo de contenido: [content_type]
 
-Audience objetivo: [audience]
-Tono: [tone]
+Audience objetivo: [audiencia]
+Tono: [tono]
 
 Consideraciones especiales:
-[special_considerations]
+[consideraciones_especiales]
 
-Deliverable:
+Entregable:
 1. Traducción directa
 2. Adaptación cultural si es necesaria
 3. Glosario de términos técnicos`,
     blanks: [
-      "original_text",
-      "source_language",
-      "target_language",
-      "content_type",
-      "audience",
-      "tone",
-      "special_considerations",
+      "texto_original",
+      "idioma_origen",
+      "idioma_destino",
+      "tipo_contenido",
+      "audiencia",
+      "tono",
+      "consideraciones_especiales",
     ],
-    example: `original_text: Email de quejas de cliente sobre servicio
-source_language: Español mexicano
-target_language: Inglés estadounidense
-content_type: Email formal de negocios
-audience: Director de operaciones en USA
-tone: Formal, serio pero empático
-special_considerations: Mantener nombres de productos originales, adaptar formato de fecha`,
+    example: `texto_original: Email de quejas de cliente sobre servicio
+idioma_origen: Español mexicano
+idioma_destino: Inglés estadounidense
+tipo_contenido: Email formal de negocios
+audiencia: Director de operaciones en USA
+tono: Formal, serio pero empático
+consideraciones_especiales: Mantener nombres de productos originales, adaptar formato de fecha`,
   },
   {
     id: "ge_6",
@@ -1833,12 +1826,12 @@ special_considerations: Mantener nombres de productos originales, adaptar format
     description: "Mejorar documentos existentes con feedback estructurado.",
     template: `Revisa el siguiente documento:
 
-Tipo de documento: [doc_type]
-Propósito: [purpose]
-Audience: [audience]
+Tipo de documento: [tipo_documento]
+Propósito: [proposito]
+Audiencia: [audiencia]
 
 Documento:
-[document_content]
+[contenido_documento]
 
 Necesito:
 1. Feedback general (claridad, estructura, tono)
@@ -1867,20 +1860,20 @@ Líder de proyecto: [project_lead]
 [background]
 
 2. Objetivo del proyecto:
-[objective]
+[objetivo]
 
 3. Alcance:
-[in_scope]
-[out_of_scope]
+[alcance_incluido]
+[fuera_alcance]
 
 4. Stakeholders principales:
 [stakeholders]
 
 5. Entregables:
-[deliverables]
+[entregables]
 
 6. Timeline:
-[timeline]
+[cronograma]
 
 7. Presupuesto:
 [budget]
@@ -1894,32 +1887,32 @@ Líder de proyecto: [project_lead]
 10. Restricciones:
 [constraints]`,
     blanks: [
-      "project_name",
+      "nombre_proyecto",
       "sponsor",
-      "project_lead",
-      "background",
-      "objective",
-      "in_scope",
-      "out_of_scope",
+      "lider_proyecto",
+      "antecedentes",
+      "objetivo",
+      "alcance_incluido",
+      "fuera_alcance",
       "stakeholders",
-      "deliverables",
-      "timeline",
-      "budget",
-      "risks",
-      "success_criteria",
-      "constraints",
+      "entregables",
+      "cronograma",
+      "presupuesto",
+      "riesgos",
+      "criterios_exito",
+      "restricciones",
     ],
-    example: `project_name: Implementación de sistema de gestión de mantenimiento
+    example: `nombre_proyecto: Implementación de sistema de gestión de mantenimiento
 sponsor: Director de Operaciones
-project_lead: María González
-background: Actualmente usamos Excel disperso, sin visibilidad
-objective: Digitalizar gestión de activos y mantenimiento
-in_scope: Implementación CMMS, capacitación de 20 usuarios
-out_of_scope: Compilación de histórico de equipos
+lider_proyecto: María González
+antecedentes: Actualmente usamos Excel disperso, sin visibilidad
+objetivo: Digitalizar gestión de activos y mantenimiento
+alcance_incluido: Implementación CMMS, capacitación de 20 usuarios
+fuera_alcance: Compilación de histórico de equipos
 stakeholders: IT, Facilities, Finanzas
-deliverables: Sistema funcional, usuarios capacitados, manual de usuario
-timeline: 4 meses (ene-abr 2024)
-budget: $35,000 USD (licencia + implementación)
+entregables: Sistema funcional, usuarios capacitados, manual de usuario
+cronograma: 4 meses (ene-abr 2024)
+presupuesto: $35,000 USD (licencia + implementación)
 risks: Resistencia al cambio, datos incompletos
 success_criteria: 90% adopción en 3 meses, reducción 30% tiempo de respuesta
 constraints: Sin parar operaciones, presupuesto fijo`,
