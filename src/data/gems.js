@@ -1,4 +1,4 @@
-import { BrainCircuit, Megaphone, TrendingUp, Coins } from "lucide-react";
+import { BrainCircuit, Megaphone, TrendingUp, Coins, Search, Presentation } from "lucide-react";
 
 export const GEMS = [
   {
@@ -40,5 +40,25 @@ export const GEMS = [
     color: "text-orange-500",
     gradient: "from-orange-400/20 to-red-500/20",
     border: "group-hover:border-orange-500/50",
+  },
+  {
+    id: "gem_research",
+    title: "Investigador",
+    desc: "Motor de búsqueda con respuestas citadas.",
+    url: "https://www.perplexity.ai",
+    icon: Search,
+    color: "text-cyan-500",
+    gradient: "from-cyan-500/20 to-blue-400/20",
+    border: "group-hover:border-cyan-500/50",
+  },
+  {
+    id: "gem_presentation",
+    title: "Presentador",
+    desc: "Presentaciones IA en segundos.",
+    url: "https://gamma.app",
+    icon: Presentation,
+    color: "text-pink-500",
+    gradient: "from-pink-500/20 to-rose-400/20",
+    border: "group-hover:border-pink-500/50",
   },
 ];

@@ -46,7 +46,7 @@ export const GUIDE_CONTENT = {
           'Evita el tono de "vendedor desesperado". Somos ingenieros, no un bazar.',
         icon: "Ban",
         iconColor: "red",
-        forbidden: ["¡Oferta!", "¡Corre que se acaban!", "Preciazo"],
+        forbidden: ["¡Oferta!", "¡Corre que se acaba!", "Preciazo"],
         use: ["Inversión", "Retorno", "Vida útil"],
       },
     ],
@@ -118,4 +118,34 @@ export const GUIDE_CONTENT = {
       },
     ],
   },
+  toolsSection: {
+    title: "Herramientas de Investigación y Diseño",
+    icon: "Search",
+    tools: [
+      {
+        id: "perplexity",
+        name: "Perplexity",
+        description: "Motor de búsqueda conversacional con fuentes citadas. Ideal para investigar rápido con referencias verificables.",
+        useCases: ["Investigar temas técnicos", "Comparar productos", "Resumir noticias"],
+        recommendations: [
+          "Usa 'Focus' para especificar tipo de fuente (academic, web, youtube)",
+          "Pide siempre las fuentes para verificar información",
+          "Ideal para investigar antes de preguntar a Gemini"
+        ],
+        color: "cyan"
+      },
+      {
+        id: "gamma",
+        name: "Gamma",
+        description: "Crea presentaciones profesionales con IA. Genera slides, estructura y diseño automáticamente.",
+        useCases: ["Presentaciones de ventas", "Informes ejecutivos", "Capacitaciones"],
+        recommendations: [
+          "Start with a clear outline - Gamma expands it into slides",
+          "Use 'Assemble' mode for best control over structure",
+          "Export to PDF or PowerPoint for final edits"
+        ],
+        color: "pink"
+      }
+    ]
+  }
 };

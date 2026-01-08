@@ -7,6 +7,7 @@ import {
   ArrowUpRight,
   Sparkles,
   BookOpen,
+  FileText,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "../components/ThemeToggle";
@@ -65,13 +66,20 @@ function Home() {
               automatización desde un único lugar.
             </p>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-wrap justify-center gap-4">
               <Link
                 to="/recommendations"
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-white/10 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 <BookOpen size={16} />
                 <span>Ver Guía Maestra de IA</span>
+              </Link>
+              <Link
+                to="/prompts"
+                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-gray-50 dark:hover:bg-white/10 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 shadow-sm hover:shadow-md"
+              >
+                <FileText size={16} />
+                <span>Biblioteca de Prompts</span>
               </Link>
             </div>
           </div>

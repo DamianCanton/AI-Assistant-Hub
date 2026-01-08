@@ -10,6 +10,8 @@ import {
   ArrowLeft,
   CheckCircle2,
   XCircle,
+  Search,
+  Presentation,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import ThemeToggle from "../components/ThemeToggle";
@@ -25,6 +27,8 @@ const iconMap = {
   Terminal,
   CheckCircle2,
   XCircle,
+  Search,
+  Presentation,
 };
 
 const colorMap = {
@@ -35,6 +39,8 @@ const colorMap = {
   orange: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
   purple: "bg-purple-500/10 text-purple-600 dark:text-purple-400",
   emerald: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
+  cyan: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
+  pink: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
 };
 
 const Icon = ({ name, size = 24, className = "" }) => {
@@ -43,7 +49,7 @@ const Icon = ({ name, size = 24, className = "" }) => {
 };
 
 const Recommendations = () => {
-  const { hero, shieldProtocol, opsManual, promptFormula } = GUIDE_CONTENT;
+  const { hero, shieldProtocol, opsManual, promptFormula, toolsSection } = GUIDE_CONTENT;
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-[#0a0a0a] text-slate-900 dark:text-white font-sans transition-colors duration-500 selection:bg-indigo-500 selection:text-white relative overflow-hidden">
@@ -305,6 +311,79 @@ const Recommendations = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </section>
+
+          {/* SECTION 3: TOOLS SECTION */}
+          <section className="mt-20">
+            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3 text-slate-800 dark:text-slate-100">
+              <span className="p-2 rounded-lg bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
+                <Icon name={toolsSection.icon} size={24} />
+              </span>
+              {toolsSection.title}
+            </h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {toolsSection.tools.map((tool) => (
+                <div
+                  key={tool.id}
+                  className="p-6 rounded-2xl bg-white/60 dark:bg-white/5 backdrop-blur-xl border border-gray-200/50 dark:border-white/10 hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                        tool.color === "cyan"
+                          ? "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400"
+                          : "bg-pink-500/10 text-pink-600 dark:text-pink-400"
+                      }`}
+                    >
+                      <Icon name={tool.color === "cyan" ? "Search" : "Presentation"} size={24} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold mb-2">{tool.name}</h3>
+                      <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
+                        {tool.description}
+                      </p>
+
+                      {/* Use Cases */}
+                      {tool.useCases && (
+                        <div className="mb-4">
+                          <h4 className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-2">
+                            Casos de uso
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {tool.useCases.map((useCase) => (
+                              <span
+                                key={useCase}
+                                className="px-2 py-1 rounded-md bg-slate-100 dark:bg-white/5 text-xs text-slate-600 dark:text-slate-400"
+                              >
+                                {useCase}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Recommendations */}
+                      {tool.recommendations && (
+                        <div className="p-3 rounded-lg bg-slate-50 dark:bg-white/5">
+                          <h4 className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase mb-2">
+                            Recomendaciones
+                          </h4>
+                          <ul className="space-y-1">
+                            {tool.recommendations.map((rec, i) => (
+                              <li key={i} className="text-xs text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                                <span className="text-indigo-500 mt-0.5">•</span>
+                                {rec}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
         </main>
