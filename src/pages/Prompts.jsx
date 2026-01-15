@@ -142,8 +142,9 @@ const Prompts = () => {
           </div>
         </div>
 
-        {viewMode === "browse" ? (
-          <>
+        <div key={viewMode} className="animate-fade-in-up">
+          {viewMode === "browse" ? (
+            <>
             <div className="flex flex-col gap-6 mb-8">
               {/* Independent Search Bar */}
               <div className="relative w-full max-w-2xl mx-auto">
@@ -292,7 +293,8 @@ const Prompts = () => {
               </div>
             )}
           </div>
-        )}
+          )}
+        </div>
       </main>
     </Layout>
   );
