@@ -144,8 +144,8 @@ const Prompts = () => {
 
         {viewMode === "browse" ? (
           <>
-            <div className="flex flex-col md:flex-row gap-4 mb-8">
-              <div className="relative flex-1">
+            <div className="flex flex-col gap-6 mb-8 max-w-3xl mx-auto">
+              <div className="relative w-full">
                 <Search
                   size={20}
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
@@ -155,10 +155,10 @@ const Prompts = () => {
                   placeholder="Buscar prompts..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/60 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all"
+                  className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/60 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all shadow-sm"
                 />
               </div>
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 custom-scrollbar">
+              <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 md:pb-0 custom-scrollbar">
                 <Filter size={18} className="text-slate-400 shrink-0" />
                 {CATEGORIES.map((cat) => (
                   <button
@@ -176,7 +176,7 @@ const Prompts = () => {
               </div>
             </div>
 
-            <div className="mb-4 text-sm text-slate-500 dark:text-slate-400">
+            <div className="mb-4 text-center text-sm text-slate-500 dark:text-slate-400">
               {filteredPrompts.length} prompt
               {filteredPrompts.length !== 1 ? "s" : ""} encontrado
               {filteredPrompts.length !== 1 ? "s" : ""}
