@@ -144,8 +144,9 @@ const Prompts = () => {
 
         {viewMode === "browse" ? (
           <>
-            <div className="flex flex-col gap-6 mb-8 max-w-3xl mx-auto">
-              <div className="relative w-full">
+            <div className="flex flex-col gap-6 mb-8">
+              {/* Independent Search Bar */}
+              <div className="relative w-full max-w-2xl mx-auto">
                 <Search
                   size={20}
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
@@ -158,21 +159,25 @@ const Prompts = () => {
                   className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/60 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all shadow-sm"
                 />
               </div>
-              <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 md:pb-0 custom-scrollbar">
-                <Filter size={18} className="text-slate-400 shrink-0" />
-                {CATEGORIES.map((cat) => (
-                  <button
-                    key={cat.id}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
-                      selectedCategory === cat.id
-                        ? "bg-indigo-600 text-white"
-                        : "bg-white/60 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-500/10"
-                    }`}
-                  >
-                    {cat.label}
-                  </button>
-                ))}
+
+              {/* Independent Filters */}
+              <div className="w-full mx-auto">
+                <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 custom-scrollbar">
+                  <Filter size={18} className="text-slate-400 shrink-0" />
+                  {CATEGORIES.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => setSelectedCategory(cat.id)}
+                      className={`px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
+                        selectedCategory === cat.id
+                          ? "bg-indigo-600 text-white"
+                          : "bg-white/60 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-500/10"
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
 
