@@ -7,7 +7,9 @@ import {
   Star,
   StarOff,
 } from "lucide-react";
+import toast from "react-hot-toast";
 import { CATEGORIES } from "../data/prompts";
+import { copyToClipboard } from "../utils/clipboard";
 
 const PromptItem = ({
   prompt,
@@ -44,15 +46,26 @@ const PromptItem = ({
     return text;
   };
 
-  const handleCopy = (e) => {
+  const handleCopy = async (e) => {
     e.stopPropagation();
     const textToCopy = getFilledTemplate();
-    navigator.clipboard.writeText(textToCopy);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    
+    const result = await copyToClipboard(textToCopy);
+    
+    if (result.success) {
+      setCopied(true);
+      toast.success('Prompt copiado al portapapeles', {
+        icon: '📋',
+      });
+      setTimeout(() => setCopied(false), 2000);
 
-    if (onCopy) {
-      onCopy(prompt, textToCopy, inputs);
+      if (onCopy) {
+        onCopy(prompt, textToCopy, inputs);
+      }
+    } else {
+      toast.error(`Error al copiar: ${result.error || 'Inténtalo de nuevo'}`, {
+        icon: '❌',
+      });
     }
   };
 

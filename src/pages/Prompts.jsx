@@ -1,44 +1,43 @@
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { ArrowLeft, Search, Filter, History, Trash2, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 import { PROMPTS, CATEGORIES } from "../data/prompts";
 import ThemeToggle from "../components/ThemeToggle";
 import PromptItem from "../components/PromptItem";
 import Layout from "../components/Layout";
+import { usePersistedState } from "../hooks/usePersistedState";
+import { debounce } from "../utils/debounce";
+import { copyToClipboard } from "../utils/clipboard";
 
 const Prompts = () => {
-  const [viewMode, setViewMode] = useState("browse"); // 'browse' or 'history'
+  const [viewMode, setViewMode] = useState("browse");
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [expandedPrompt, setExpandedPrompt] = useState(null);
   
-  const [favorites, setFavorites] = useState(() => {
-    const saved = localStorage.getItem("promptFavorites");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [favorites, setFavorites] = usePersistedState("promptFavorites", []);
+  const [history, setHistory] = usePersistedState("promptHistory", []);
 
-  const [history, setHistory] = useState(() => {
-    const saved = localStorage.getItem("promptHistory");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const debouncedSearch = useMemo(
+    () => debounce((term) => setDebouncedSearchTerm(term), 300),
+    []
+  );
 
   useEffect(() => {
-    localStorage.setItem("promptFavorites", JSON.stringify(favorites));
-  }, [favorites]);
+    debouncedSearch(searchTerm);
+  }, [searchTerm, debouncedSearch]);
 
-  useEffect(() => {
-    localStorage.setItem("promptHistory", JSON.stringify(history));
-  }, [history]);
-
-  const toggleFavorite = (id) => {
+  const toggleFavorite = useCallback((id) => {
     setFavorites((prev) =>
       prev.includes(id) ? prev.filter((fid) => fid !== id) : [...prev, id]
     );
-  };
+  }, [setFavorites]);
 
-  const handlePromptCopy = (prompt, text, inputs) => {
+  const handlePromptCopy = useCallback((prompt, text, inputs) => {
     const newEntry = {
-      id: Date.now().toString(), // Unique ID for history item
+      id: Date.now().toString(),
       promptId: prompt.id,
       title: prompt.title,
       category: prompt.category,
@@ -47,29 +46,28 @@ const Prompts = () => {
       timestamp: new Date().toISOString(),
     };
     
-    // Add to history (newest first) and limit to 50 items
     setHistory(prev => [newEntry, ...prev].slice(0, 50));
-  };
+  }, [setHistory]);
 
-  const clearHistory = () => {
+  const clearHistory = useCallback(() => {
     if (window.confirm("¿Estás seguro de que deseas borrar todo el historial?")) {
       setHistory([]);
     }
-  };
+  }, [setHistory]);
 
-  const deleteHistoryItem = (id) => {
+  const deleteHistoryItem = useCallback((id) => {
     setHistory(prev => prev.filter(item => item.id !== id));
-  };
+  }, [setHistory]);
 
   const filteredPrompts = useMemo(() => {
     return PROMPTS.filter((prompt) => {
       const matchesSearch =
-        searchTerm === "" ||
-        prompt.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        prompt.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        prompt.template.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        debouncedSearchTerm === "" ||
+        prompt.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+        prompt.description.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+        prompt.template.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
         prompt.blanks.some((b) =>
-          b.toLowerCase().includes(searchTerm.toLowerCase())
+          b.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
         );
 
       const matchesCategory =
@@ -82,7 +80,7 @@ const Prompts = () => {
 
       return matchesSearch && matchesCategory && matchesFavorites;
     });
-  }, [searchTerm, selectedCategory, favorites]);
+  }, [debouncedSearchTerm, selectedCategory, favorites]);
 
   const headerContent = (
     <>
@@ -116,7 +114,7 @@ const Prompts = () => {
         </div>
 
         {/* View Toggle */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8" role="tablist" aria-label="Modo de vista">
           <div className="flex bg-slate-100 dark:bg-white/5 p-1 rounded-xl">
             <button
               onClick={() => setViewMode("browse")}
@@ -125,6 +123,10 @@ const Prompts = () => {
                   ? "bg-white dark:bg-indigo-600 text-slate-900 dark:text-white shadow-sm"
                   : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
+              role="tab"
+              aria-selected={viewMode === "browse"}
+              aria-controls="browse-panel"
+              aria-label="Explorar prompts disponibles"
             >
               Explorar
             </button>
@@ -135,8 +137,12 @@ const Prompts = () => {
                   ? "bg-white dark:bg-indigo-600 text-slate-900 dark:text-white shadow-sm"
                   : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
               }`}
+              role="tab"
+              aria-selected={viewMode === "history"}
+              aria-controls="history-panel"
+              aria-label="Ver historial de prompts generados"
             >
-              <History size={16} />
+              <History size={16} aria-hidden="true" />
               Historial
             </button>
           </div>
@@ -146,25 +152,32 @@ const Prompts = () => {
           {viewMode === "browse" ? (
             <>
             <div className="flex flex-col gap-6 mb-8">
-              {/* Independent Search Bar */}
-              <div className="relative w-full max-w-2xl mx-auto">
+              <form role="search" onSubmit={(e) => e.preventDefault()} className="relative w-full max-w-2xl mx-auto">
+                <label htmlFor="prompt-search" className="sr-only">
+                  Buscar prompts por título, descripción o contenido
+                </label>
                 <Search
                   size={20}
                   className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+                  aria-hidden="true"
                 />
                 <input
-                  type="text"
+                  id="prompt-search"
+                  type="search"
                   placeholder="Buscar prompts..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-12 pr-4 py-3 rounded-xl bg-white/60 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-all shadow-sm"
+                  aria-describedby="search-hint"
                 />
-              </div>
+                <span id="search-hint" className="sr-only">
+                  La búsqueda se actualiza automáticamente mientras escribes
+                </span>
+              </form>
 
-              {/* Independent Filters */}
-              <div className="w-full mx-auto">
+              <div className="w-full mx-auto" role="group" aria-label="Filtros de categoría">
                 <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 custom-scrollbar">
-                  <Filter size={18} className="text-slate-400 shrink-0" />
+                  <Filter size={18} className="text-slate-400 shrink-0" aria-hidden="true" />
                   {CATEGORIES.map((cat) => (
                     <button
                       key={cat.id}
@@ -174,6 +187,8 @@ const Prompts = () => {
                           ? "bg-indigo-600 text-white"
                           : "bg-white/60 dark:bg-white/5 border border-gray-200/50 dark:border-white/10 text-slate-600 dark:text-slate-300 hover:bg-indigo-50 dark:hover:bg-indigo-500/10"
                       }`}
+                      aria-pressed={selectedCategory === cat.id}
+                      aria-label={`Filtrar por categoría: ${cat.label}`}
                     >
                       {cat.label}
                     </button>
@@ -226,8 +241,9 @@ const Prompts = () => {
                 <button
                   onClick={clearHistory}
                   className="text-sm text-red-500 hover:text-red-600 dark:hover:text-red-400 font-medium flex items-center gap-1"
+                  aria-label="Borrar todo el historial de prompts"
                 >
-                  <Trash2 size={14} />
+                  <Trash2 size={14} aria-hidden="true" />
                   Borrar todo
                 </button>
               )}
@@ -279,11 +295,16 @@ const Prompts = () => {
 
                     <div className="flex justify-end">
                       <button
-                        onClick={() => {
-                          navigator.clipboard.writeText(item.text);
-                          // Optional: Show toast
+                        onClick={async () => {
+                          const result = await copyToClipboard(item.text);
+                          if (result.success) {
+                            toast.success('Prompt copiado nuevamente', { icon: '📋' });
+                          } else {
+                            toast.error('Error al copiar', { icon: '❌' });
+                          }
                         }}
                         className="text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:underline"
+                        aria-label="Copiar este prompt nuevamente al portapapeles"
                       >
                         Copiar de nuevo
                       </button>
