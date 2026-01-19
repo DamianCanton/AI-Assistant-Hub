@@ -1,4 +1,4 @@
-# AGENTS.md - VeroDashboard IA Hub
+# AGENTS.md - AI-Assistant-Hub
 
 This document provides guidelines for AI agents working in this repository.
 
