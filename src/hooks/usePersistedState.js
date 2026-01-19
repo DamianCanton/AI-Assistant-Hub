@@ -13,15 +13,21 @@ export const usePersistedState = (key, defaultValue) => {
       if (item === null) {
         return defaultValue;
       }
-      
+
       const parsed = JSON.parse(item);
-      
+
       // Validate that parsed data matches expected type
       if (typeof parsed !== typeof defaultValue) {
         console.warn(`Type mismatch for ${key}, using default value`);
         return defaultValue;
       }
-      
+
+      // Specific check for Arrays since typeof [] is 'object'
+      if (Array.isArray(defaultValue) && !Array.isArray(parsed)) {
+        console.warn(`Expected array for ${key} but got object, using default value`);
+        return defaultValue;
+      }
+
       return parsed;
     } catch (error) {
       console.error(`Error reading ${key} from localStorage:`, error);
